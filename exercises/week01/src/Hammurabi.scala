@@ -82,6 +82,10 @@ your term. Rule poorly and you will be kicked out of office!
     numberStarved
   }
 
+  def calculateImmigrants(acres: Int, bushels: Int, population: Int): Int ={
+    (20 * acres + bushels)/(100 * population) + 1
+  }
+
   def depose(starved: Int) {
     println("As a result of your infinite wisdom, " + starved + " people died of starvation this year.")
     println(
@@ -136,11 +140,16 @@ your term. Rule poorly and you will be kicked out of office!
       println("")
       println("")
       if(doesPlagueOccur()) {
-        population /= 2
+        plagueDeaths = population/2
+        population -= plagueDeaths
         println("O great Hammurabi, there has been a plague! Half of your people have died.")
       }
       starved = numberStarved(population, grainToFeed)
       population -= starved
+      if (starved == 0) {
+        immigrants = calculateImmigrants(acresOwned, bushelsInStorage, population)
+        population += immigrants
+      }
     }
   }
 
