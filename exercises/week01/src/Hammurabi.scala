@@ -1,9 +1,11 @@
+import scala.util.Random
+
 /**
   * Created by samaj on 14/01/17.
   */
 object Hammurabi {
 
-  def printIntroductoryMessage() = {
+  def printIntroductoryMessage() {
     println("""Congratulations, you are the newest ruler of ancient Samaria, elected
 for a ten year term of office. Your duties are to dispense food, direct
 farming, and buy and sell land as needed to support your people. Watch
@@ -31,7 +33,7 @@ your term. Rule poorly and you will be kicked out of office!
     }
   }
 
-  def askHowMuchLandToBuy(bushels: Int, price: Int) = {
+  def askHowMuchLandToBuy(bushels: Int, price: Int): Int = {
     var acresToBuy = readInt("How many acres will you buy? ")
     while (acresToBuy < 0 || acresToBuy * price > bushels) {
       println("O Great Hammurabi, we have but " + bushels + " bushels of grain!")
@@ -40,7 +42,7 @@ your term. Rule poorly and you will be kicked out of office!
     acresToBuy
   }
 
-  def askHowMuchLandToSell(owned: Int) = {
+  def askHowMuchLandToSell(owned: Int): Int = {
     var acresToSell = readInt("How many acres will you sell? ")
     while (acresToSell < 0 || acresToSell > owned) {
       println("O Great Hammurabi, we have but " + owned + " acres of land!")
@@ -49,16 +51,16 @@ your term. Rule poorly and you will be kicked out of office!
     acresToSell
   }
 
-  def askHowMuchGrainToFeed(bushels: Int, population: Int) = {
+  def askHowMuchGrainToFeed(bushels: Int, population: Int): Int = {
     var grainToFeed = readInt("How much grain will you feed the people? ")
-    while (grainToFeed < 0 || grainToFeed * population > bushels) {
+    while (grainToFeed < 0 || grainToFeed > bushels) {
       println("O Great Hammurabi, we have but " + bushels + " bushels of grain!")
       grainToFeed = readInt("How much grain will you feed the people? ")
     }
     grainToFeed
   }
 
-  def askHowMuchSeedToPlant(bushels: Int, acres: Int) = {
+  def askHowMuchSeedToPlant(bushels: Int, acres: Int): Int = {
     var seedToPlant = readInt("How many acres will you plant with seed? ")
     while (seedToPlant < 0 || seedToPlant > acres || seedToPlant > bushels) {
       println("O Great Hammurabi, we have but " + bushels +
@@ -68,7 +70,11 @@ your term. Rule poorly and you will be kicked out of office!
     seedToPlant
   }
 
-  def hammurabi() = {
+  def doesPlagueOccur(): Boolean = {
+    if (Random.nextInt(100) < 15) true else false
+  }
+
+  def hammurabi() {
     var starved = 0
     var immigrants = 5
     var population = 100
@@ -105,10 +111,16 @@ your term. Rule poorly and you will be kicked out of office!
         println("")
       }
       var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage, population)
-      bushelsInStorage -= grainToFeed * population
+      bushelsInStorage -= grainToFeed
       println("")
       var seedToPlant = askHowMuchSeedToPlant(bushelsInStorage, acresOwned)
       bushelsInStorage -= seedToPlant
+      println("")
+      println("")
+      if(doesPlagueOccur()) {
+        population /= 2
+        println("O great Hammurabi, there has been a plague! Half of your people have died.")
+      }
     }
   }
 
