@@ -121,6 +121,7 @@ your term. Rule poorly and you will be kicked out of office!
     var acresOwned = 1000
     var pricePerAcre = 19
     var plagueDeaths = 0
+    var totalStarved = 0
 
     printIntroductoryMessage()
 
@@ -160,10 +161,11 @@ your term. Rule poorly and you will be kicked out of office!
       }
       starved = numberStarved(population, grainToFeed)
       population -= starved
+      totalStarved += starved
       if (starved == 0) {
         immigrants = calculateImmigrants(acresOwned, bushelsInStorage, population)
         population += immigrants
-      }
+      } else immigrants = 0
       bushelsPerAcre = calculateHarvest()
       harvest = bushelsPerAcre * seedToPlant
       bushelsInStorage += harvest
