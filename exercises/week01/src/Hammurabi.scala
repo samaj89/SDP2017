@@ -80,7 +80,7 @@ your term. Rule poorly and you will be kicked out of office!
     if (numberStarved >= population * 0.45) {
       depose(numberStarved)
     }
-    numberStarved
+    if (numberStarved < 0) 0 else numberStarved
   }
 
   def calculateImmigrants(acres: Int, bushels: Int, population: Int): Int ={
