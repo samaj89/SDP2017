@@ -60,11 +60,12 @@ your term. Rule poorly and you will be kicked out of office!
     grainToFeed
   }
 
-  def askHowMuchSeedToPlant(bushels: Int, acres: Int): Int = {
+  def askHowMuchSeedToPlant(bushels: Int, acres: Int, population: Int): Int = {
     var seedToPlant = readInt("How many acres will you plant with seed? ")
-    while (seedToPlant < 0 || seedToPlant > acres || seedToPlant > bushels) {
+    while (seedToPlant < 0 || seedToPlant > acres || seedToPlant*2 > bushels || seedToPlant/10 > population) {
       println("O Great Hammurabi, we have but " + bushels +
-                " bushels of grain and " + acres + " acres of land!")
+                " bushels of grain, " + acres + " acres of land, and " +
+                population + " people to farm it!")
       seedToPlant = readInt("How many acres will you plant with seed? ")
     }
     seedToPlant
@@ -75,7 +76,7 @@ your term. Rule poorly and you will be kicked out of office!
   }
 
   def numberStarved(population: Int, grainFed: Int): Int = {
-    var numberStarved = population - (grainFed/20)
+    val numberStarved = population - (grainFed/20)
     if (numberStarved >= population * 0.45) {
       depose(numberStarved)
     }
@@ -150,7 +151,7 @@ your term. Rule poorly and you will be kicked out of office!
       var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage, population)
       bushelsInStorage -= grainToFeed
       println("")
-      var seedToPlant = askHowMuchSeedToPlant(bushelsInStorage, acresOwned)
+      var seedToPlant = askHowMuchSeedToPlant(bushelsInStorage, acresOwned, population)
       bushelsInStorage -= seedToPlant
       println("")
       println("")
