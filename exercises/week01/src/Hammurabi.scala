@@ -74,6 +74,24 @@ your term. Rule poorly and you will be kicked out of office!
     if (Random.nextInt(100) < 15) true else false
   }
 
+  def numberStarved(population: Int, grainFed: Int): Int = {
+    var numberStarved = population - grainFed/20
+    if (numberStarved >= population * 0.45) {
+      depose(numberStarved)
+    }
+    numberStarved
+  }
+
+  def depose(starved: Int) {
+    println("As a result of your infinite wisdom, " + starved + " people died of starvation this year.")
+    println(
+      """This represents 45% or more of the population. According to our laws,
+         you have been removed from office for your negligence.
+         ================= G A M E   O V E R =================
+      """)
+     System.exit(0)
+  }
+
   def hammurabi() {
     var starved = 0
     var immigrants = 5
@@ -121,6 +139,8 @@ your term. Rule poorly and you will be kicked out of office!
         population /= 2
         println("O great Hammurabi, there has been a plague! Half of your people have died.")
       }
+      starved = numberStarved(population, grainToFeed)
+      population -= starved
     }
   }
 
