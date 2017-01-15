@@ -158,8 +158,7 @@ your term. Rule poorly and you will be kicked out of office!
       if(doesPlagueOccur()) {
         plagueDeaths = population/2
         population -= plagueDeaths
-        println("O great Hammurabi, there has been a plague! Half of your people have died.")
-      }
+      } else plagueDeaths = 0
       starved = numberStarved(population, grainToFeed)
       population -= starved
       totalStarved += starved
@@ -176,7 +175,7 @@ your term. Rule poorly and you will be kicked out of office!
     }
     println("================= C O N G R A T U L A T I O N S =================")
     println("O great Hammurabi, you have reached the end of your ten-year reign!")
-    println("During your reign a total of " + totalStarved + " people died.")
+    println("During your reign a total of " + totalStarved + " people died of starvation.")
     println("At the end of your reign the city owns " + acresOwned + " acres.")
     println("================= G A M E   O V E R =================")
   }
