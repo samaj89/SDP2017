@@ -75,7 +75,7 @@ your term. Rule poorly and you will be kicked out of office!
   }
 
   def numberStarved(population: Int, grainFed: Int): Int = {
-    var numberStarved = population - grainFed/20
+    var numberStarved = population - (grainFed/20)
     if (numberStarved >= population * 0.45) {
       depose(numberStarved)
     }
@@ -173,8 +173,13 @@ your term. Rule poorly and you will be kicked out of office!
       bushelsInStorage -= rats_ate
       pricePerAcre = calculateAcrePrice()
     }
+    println("================= C O N G R A T U L A T I O N S =================")
+    println("O great Hammurabi, you have reached the end of your ten-year reign!")
+    println("During your reign a total of " + totalStarved + " people died.")
+    println("At the end of your reign the city owns " + acresOwned + " acres.")
+    println("================= G A M E   O V E R =================")
   }
-
 }
+Hammurabi.hammurabi()
 
 
