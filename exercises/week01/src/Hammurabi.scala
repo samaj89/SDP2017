@@ -86,6 +86,10 @@ your term. Rule poorly and you will be kicked out of office!
     (20 * acres + bushels)/(100 * population) + 1
   }
 
+  def calculateHarvest(): Int = {
+    Random.nextInt(8)+1
+  }
+
   def depose(starved: Int) {
     println("As a result of your infinite wisdom, " + starved + " people died of starvation this year.")
     println(
@@ -150,6 +154,9 @@ your term. Rule poorly and you will be kicked out of office!
         immigrants = calculateImmigrants(acresOwned, bushelsInStorage, population)
         population += immigrants
       }
+      bushelsPerAcre = calculateHarvest()
+      harvest = bushelsPerAcre * seedToPlant
+      bushelsInStorage += harvest
     }
   }
 
