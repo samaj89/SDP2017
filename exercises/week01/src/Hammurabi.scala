@@ -90,6 +90,12 @@ your term. Rule poorly and you will be kicked out of office!
     Random.nextInt(8)+1
   }
 
+  def calculateRatDamage(): Int = {
+    if (Random.nextInt(100) < 40) {
+      Random.nextInt(20)+10
+    } else 0
+  }
+
   def depose(starved: Int) {
     println("As a result of your infinite wisdom, " + starved + " people died of starvation this year.")
     println(
@@ -157,6 +163,8 @@ your term. Rule poorly and you will be kicked out of office!
       bushelsPerAcre = calculateHarvest()
       harvest = bushelsPerAcre * seedToPlant
       bushelsInStorage += harvest
+      rats_ate = bushelsInStorage * calculateRatDamage() / 100
+      bushelsInStorage -= rats_ate
     }
   }
 
