@@ -92,8 +92,12 @@ your term. Rule poorly and you will be kicked out of office!
 
   def calculateRatDamage(): Int = {
     if (Random.nextInt(100) < 40) {
-      Random.nextInt(20)+10
+      Random.nextInt(21)+10
     } else 0
+  }
+
+  def calculateAcrePrice(): Int = {
+    Random.nextInt(7)+17
   }
 
   def depose(starved: Int) {
@@ -165,6 +169,7 @@ your term. Rule poorly and you will be kicked out of office!
       bushelsInStorage += harvest
       rats_ate = bushelsInStorage * calculateRatDamage() / 100
       bushelsInStorage -= rats_ate
+      pricePerAcre = calculateAcrePrice()
     }
   }
 
