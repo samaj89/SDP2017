@@ -40,6 +40,34 @@ your term. Rule poorly and you will be kicked out of office!
     acresToBuy
   }
 
+  def askHowMuchLandToSell(owned: Int) = {
+    var acresToSell = readInt("How many acres will you sell? ")
+    while (acresToSell < 0 || acresToSell > owned) {
+      println("O Great Hammurabi, we have but " + owned + " acres of land!")
+      acresToSell = readInt("How many acres will you sell? ")
+    }
+    acresToSell
+  }
+
+  def askHowMuchGrainToFeed(bushels: Int, population: Int) = {
+    var grainToFeed = readInt("How much grain will you feed the people? ")
+    while (grainToFeed < 0 || grainToFeed * population > bushels) {
+      println("O Great Hammurabi, we have but " + bushels + " bushels of grain!")
+      grainToFeed = readInt("How much grain will you feed the people? ")
+    }
+    grainToFeed
+  }
+
+  def askHowMuchSeedToPlant(bushels: Int, acres: Int) = {
+    var seedToPlant = readInt("How many acres will you plant with seed? ")
+    while (seedToPlant < 0 || seedToPlant > acres || seedToPlant > bushels) {
+      println("O Great Hammurabi, we have but " + bushels +
+                " bushels of grain and " + acres + " acres of land!")
+      seedToPlant = readInt("How many acres will you plant with seed? ")
+    }
+    seedToPlant
+  }
+
   def hammurabi() = {
     var starved = 0
     var immigrants = 5
@@ -67,7 +95,20 @@ your term. Rule poorly and you will be kicked out of office!
       println("There were " + plagueDeaths + " deaths from the plague.")
       println("")
       var acresToBuy = askHowMuchLandToBuy(bushelsInStorage, pricePerAcre)
-      acresOwned = acresOwned + acresToBuy
+      acresOwned += acresToBuy
+      bushelsInStorage -= acresToBuy * pricePerAcre
+      println("")
+      if (acresToBuy == 0) {
+        var acresToSell = askHowMuchLandToSell(acresOwned)
+        acresOwned -= acresToSell
+        bushelsInStorage += acresToSell * pricePerAcre
+        println("")
+      }
+      var grainToFeed = askHowMuchGrainToFeed(bushelsInStorage, population)
+      bushelsInStorage -= grainToFeed * population
+      println("")
+      var seedToPlant = askHowMuchSeedToPlant(bushelsInStorage, acresOwned)
+      bushelsInStorage -= seedToPlant
     }
   }
 
