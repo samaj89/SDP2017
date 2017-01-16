@@ -4,9 +4,24 @@
  * fields; no method bodies).
  */
 
+import java.util.Scanner;
+
 public class ClassInfoRetriever {
+    private Class c;
+    private Scanner in;
 
     private void launch() {
+        try {
+            in = new Scanner(System.in);
+            System.out.println("Enter the name of a Java class: ");
+            String className = in.next();
+            c = Class.forName(className);
+            System.out.println("Class Name: " + c.getName());
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            in.close();
+        }
 
     }
 
