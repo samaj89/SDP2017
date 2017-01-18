@@ -11,7 +11,7 @@ object NumberPersonalities {
   }
 
   def isPrime(n: Int): Boolean = {
-    false
+    null
   }
 
   def isHappy(n: Int): Boolean = {
