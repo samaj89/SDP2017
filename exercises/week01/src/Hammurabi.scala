@@ -180,6 +180,6 @@ your term. Rule poorly and you will be kicked out of office!
     println("================= G A M E   O V E R =================")
   }
 }
-Hammurabi.hammurabi()
+//Hammurabi.hammurabi()
 
 
