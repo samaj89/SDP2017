@@ -10,7 +10,7 @@ object NumberPersonalities {
     }
   }
 
-  def isPrime(n: Int): Boolean = {
+  def isPrime(n: Int) = {
     null
   }
 

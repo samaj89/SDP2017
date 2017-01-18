@@ -4,7 +4,7 @@
 
 import org.scalatest.FunSuite
 
-object NumberPersonalitiesTests extends FunSuite {
+class NumberPersonalitiesTests extends FunSuite {
 
   test("1 is not a prime number") {
     assert(NumberPersonalities.isPrime(1) === false)
