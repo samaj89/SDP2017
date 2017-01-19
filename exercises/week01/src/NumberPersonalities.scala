@@ -17,6 +17,10 @@ object NumberPersonalities {
   }
 
   def isHappy(n: Int) = {
+    def digits(x: Int) = {}
+    def sumOfSquares(digits: Seq[Int]) = {}
+
+    def loop(seen: Set[Int]) = {}
   }
 
   def isTriangular(n: Int): Boolean = {
