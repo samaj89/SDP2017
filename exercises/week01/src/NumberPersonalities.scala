@@ -16,8 +16,7 @@ object NumberPersonalities {
     else !(2 to (n-1)).exists(x => n % x == 0)
   }
 
-  def isHappy(n: Int): Boolean = {
-    false
+  def isHappy(n: Int) = {
   }
 
   def isTriangular(n: Int): Boolean = {

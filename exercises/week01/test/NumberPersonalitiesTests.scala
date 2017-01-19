@@ -21,4 +21,20 @@ class NumberPersonalitiesTests extends FunSuite {
   test("205 is not a prime number") {
     assert(NumberPersonalities.isPrime(205) === false)
   }
+
+  test("1 is a happy number") {
+    assert(NumberPersonalities.isHappy(1) === true)
+  }
+
+  test("2 is not a happy number") {
+    assert(NumberPersonalities.isHappy(2) === false)
+  }
+
+  test("495 is not a happy number") {
+    assert(NumberPersonalities.isHappy(495) === false)
+  }
+
+  test("998 is a happy number") {
+    assert(NumberPersonalities.isHappy(998) === true)
+  }
 }
