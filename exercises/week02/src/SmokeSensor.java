@@ -11,21 +11,20 @@ public class SmokeSensor implements Sensor {
 
     @Override
     public boolean isTriggered() {
-    return false;
-  }
+        if (getBatteryPercentage() != 0.0) batteryPercentage -= 20;
+        return Math.random() < 0.1;
+    }
 
     @Override
     public String getLocation() {
-    return null;
+    return location;
   }
 
     @Override
-    public String getSensorType() {
-    return null;
-  }
+    public String getSensorType() { return sensorType; }
 
     @Override
     public double getBatteryPercentage() {
-    return -1;
+    return batteryPercentage;
   }
 }

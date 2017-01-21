@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 public class SmokeSensorTest {
 
     @Test
-    public void testThatIsTriggeredReturnsTrueAroundFivePercentOfTheTime() {
+    public void testThatIsTriggeredReturnsTrueAroundTenPercentOfTheTime() {
       SmokeSensor sensor = new SmokeSensor("Lobby 1st floor");
       int count = 0;
       boolean isTriggered;
@@ -14,7 +14,7 @@ public class SmokeSensorTest {
         isTriggered = sensor.isTriggered();
         if (isTriggered) count++;
       }
-      assertTrue(count > 40 && count < 60);
+      assertTrue(count > 90 && count < 110);
     }
 
   @Test
@@ -49,7 +49,7 @@ public class SmokeSensorTest {
 
   @Test
   public void testThatGetBatteryPercentageNeverReturnsLessThanZero() {
-    FireSensor sensor = new FireSensor("Lobby 1st floor");
+    SmokeSensor sensor = new SmokeSensor("Lobby 1st floor");
     for (int i = 0; i < 6; i++) {
       sensor.isTriggered();
     }
