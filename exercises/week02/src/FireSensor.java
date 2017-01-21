@@ -9,23 +9,24 @@ public class FireSensor implements Sensor {
         this.sensorType = "Fire sensor";
     }
 
-  @Override
-  public boolean isTriggered() {
-    return Math.random() < 0.05;
-  }
+    @Override
+    public boolean isTriggered() {
+        if (getBatteryPercentage() != 0.0) batteryPercentage -= 10;
+        return Math.random() < 0.05;
+    }
 
-  @Override
-  public String getLocation() {
+    @Override
+    public String getLocation() {
     return null;
   }
 
-  @Override
-  public String getSensorType() {
+    @Override
+    public String getSensorType() {
     return null;
   }
 
-  @Override
-  public double getBatteryPercentage() {
-    return -1;
+    @Override
+    public double getBatteryPercentage() {
+    return batteryPercentage;
   }
 }

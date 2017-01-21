@@ -36,7 +36,7 @@ public class FireSensorTest {
     public void testThatGetBatteryPercentageReturns100AfterInstantiation() {
         FireSensor sensor = new FireSensor("Lobby 1st floor");
         double batteryPercentage = sensor.getBatteryPercentage();
-        assertEquals(100.0, batteryPercentage);
+        assertEquals(100.0, batteryPercentage, 0.01);
     }
 
     @Test
@@ -44,7 +44,7 @@ public class FireSensorTest {
         FireSensor sensor = new FireSensor("Lobby 1st floor");
         sensor.isTriggered();
         double batteryPercentage = sensor.getBatteryPercentage();
-        assertEquals(90.0, batteryPercentage);
+        assertEquals(90.0, batteryPercentage, 0.01);
     }
 
     @Test
@@ -54,6 +54,6 @@ public class FireSensorTest {
             sensor.isTriggered();
         }
         double batteryPercentage = sensor.getBatteryPercentage();
-        assertEquals(0.0, batteryPercentage);
+        assertEquals(0.0, batteryPercentage, 0.01);
     }
 }
