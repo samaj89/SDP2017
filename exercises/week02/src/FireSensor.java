@@ -17,12 +17,12 @@ public class FireSensor implements Sensor {
 
     @Override
     public String getLocation() {
-    return null;
+    return location;
   }
 
     @Override
     public String getSensorType() {
-    return null;
+    return sensorType;
   }
 
     @Override
