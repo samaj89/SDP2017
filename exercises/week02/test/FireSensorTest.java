@@ -18,18 +18,18 @@ public class FireSensorTest {
     }
 
     @Test
-    public void testThatGetLocationReturnsNull() {
+    public void testThatGetLocationReturnsLocationInputAtConstructor() {
         FireSensor sensor = new FireSensor("Lobby 1st floor");
         String location = sensor.getLocation();
-        assertEquals(null, location);
+        assertEquals("Lobby 1st floor", location);
     }
 
 
     @Test
-    public void testThatGetSensorTypeReturnsNull() {
+    public void testThatGetSensorTypeReturnsFireSensor() {
         FireSensor sensor = new FireSensor("Lobby 1st floor");
         String sensorType = sensor.getSensorType();
-        assertEquals(null, sensorType);
+        assertEquals("Fire sensor", sensorType);
     }
 
     @Test
