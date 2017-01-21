@@ -1,17 +1,17 @@
 public class FireSensor implements Sensor {
     private String location;
-    private int batteryPercentage;
+    private double batteryPercentage;
     private String sensorType;
 
     public FireSensor(String location) {
         this.location = location;
-        this.batteryPercentage = 100;
+        this.batteryPercentage = 100.0;
         this.sensorType = "Fire sensor";
     }
 
   @Override
   public boolean isTriggered() {
-    return false;
+    return Math.random() < 0.05;
   }
 
   @Override
