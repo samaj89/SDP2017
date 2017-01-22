@@ -1,35 +1,59 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SmokeSensorTest {
 
   @Test
-  public void testThatIsTriggeredReturnsFalse() {
-    SmokeSensor sensor = new SmokeSensor();
-    boolean isTriggered = sensor.isTriggered();
-    assertEquals(false, isTriggered);
+  public void testThatIsTriggeredReturnsTrueRoughlyTenPercentOfTheTime() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
+    int count = 0;
+    boolean isTriggered;
+    for (int i = 0; i < 1000; i++) {
+      isTriggered = sensor.isTriggered();
+      if (isTriggered) count++;
+    }
+    assertTrue(count > 90 && count < 110);
   }
 
   @Test
-  public void testThatGetLocationReturnsNull() {
-    SmokeSensor sensor = new SmokeSensor();
+  public void testThatGetLocationReturnsSpecifiedLocation() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
     String location = sensor.getLocation();
-    assertEquals(null, location);
+    assertEquals("1st floor lobby", location);
   }
 
   @Test
-  public void testThatGetSensorTypeReturnsNull() {
-    SmokeSensor sensor = new SmokeSensor();
+  public void testThatGetSensorTypeReturnsSmoke() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
     String sensorType = sensor.getSensorType();
-    assertEquals(null, sensorType);
+    assertEquals("Smoke", sensorType);
   }
 
   @Test
-  public void testThatGetBatteryPercentageReturnsNegativeOne() {
-    SmokeSensor sensor = new SmokeSensor();
+  public void testThatGetBatteryPercentageReturns100AfterInitiation() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
     double batteryPercentage = sensor.getBatteryPercentage();
-    assertEquals(-1.0, batteryPercentage, 0.01);
+    assertEquals(100.0, batteryPercentage, 0.01);
+  }
+
+  @Test
+  public void testThatGetBatteryPercentageReturns80AfterOnePoll() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
+    sensor.isTriggered();
+    double batteryPercentage = sensor.getBatteryPercentage();
+    assertEquals(80.0, batteryPercentage, 0.01);
+  }
+
+  @Test
+  public void testThatGetBatteryPercentageNeverReturnsLessThanZero() {
+    SmokeSensor sensor = new SmokeSensor("1st floor lobby");
+    for (int i = 0; i < 6; i++) {
+      sensor.isTriggered();
+    }
+    double batteryPercentage = sensor.getBatteryPercentage();
+    assertEquals(0.0, batteryPercentage, 0.01);
   }
 
 }
