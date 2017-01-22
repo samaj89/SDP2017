@@ -1,14 +1,20 @@
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FireSensorTest {
 
   @Test
-  public void testThatIsTriggeredReturnsFalse() {
+  public void testThatIsTriggeredReturnsTrueRoughlyFivePercentOfTheTime() {
     FireSensor sensor = new FireSensor("1st floor lobby");
-    boolean isTriggered = sensor.isTriggered();
-    assertEquals(false, isTriggered);
+    int count = 0;
+    boolean isTriggered;
+    for (int i = 0; i < 1000; i++) {
+      isTriggered = sensor.isTriggered();
+      if (isTriggered) count++;
+    }
+    assertTrue(count > 40 && count < 60);
   }
 
   @Test
