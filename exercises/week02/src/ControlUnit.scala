@@ -5,7 +5,7 @@ object ControlUnit
 class ControlUnit {
   def pollSensors() {
     val sensors = new ListBuffer[Sensor]()
-    sensors += new FireSensor()
+    sensors += new FireSensor("1st floor lobby")
     sensors += new SmokeSensor()
     for (sensor <- sensors) {
       if (sensor.isTriggered) {
