@@ -4,9 +4,9 @@ class FireSensor(location: String) extends Sensor {
 
   override def isTriggered: Boolean = false
 
-  override def getLocation: String = null
+  override def getLocation: String = location
 
-  override def getSensorType: String = null
+  override def getSensorType: String = sensorType
 
-  override def getBatteryPercentage: Double = -1
+  override def getBatteryPercentage: Double = batteryPercentage
 }
