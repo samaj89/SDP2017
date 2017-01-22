@@ -12,6 +12,6 @@ class SecurityControlUnit(sensors: List[SecuritySensor]) extends ControlUnit(sen
   }
 
   override def pollSensors() {
-    if (timeCheck) super.pollSensors() else println("Can only poll between 2200 and 0600.")
+    if (timeCheck) super.pollSensors() else println("Can only poll security sensors between 2200 and 0600.")
   }
 }
