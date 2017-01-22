@@ -1,3 +1,1 @@
-public class ControlUnitTest {
-
-}
+public class ControlUnitTest {}
