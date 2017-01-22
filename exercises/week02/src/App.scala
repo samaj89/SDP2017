@@ -7,8 +7,10 @@ object App {
 
   @throws[IOException]
   def main(args: Array[String]) {
-    val sensors: List[Sensor] = List(new FireSensor("1st floor lobby"), new SmokeSensor("In the auditorium"))
-    val controlUnit: ControlUnit = new ControlUnit(sensors)
+//    val sensors: List[Sensor] = List(new FireSensor("1st floor lobby"), new SmokeSensor("In the auditorium"))
+//    val controlUnit: ControlUnit = new ControlUnit(sensors)
+    val sensors: List[SecuritySensor] = List(new MotionSensor("In the auditorium"))
+    val controlUnit: SecurityControlUnit = new SecurityControlUnit(sensors)
     val scanner: Scanner = new Scanner(System.in)
     var input: String = ""
     while (input != EXIT) {
