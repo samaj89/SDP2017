@@ -4,6 +4,4 @@ trait Sensor {
   def getLocation: String
 
   def getSensorType: String
-
-  def getBatteryPercentage: Double
 }
