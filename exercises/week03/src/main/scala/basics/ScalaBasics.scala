@@ -26,7 +26,7 @@ object ScalaBasics {
    * @param end the end of the range
    * @return the inclusive Range from start to end
    */
-  def inRange(start: Int, end: Int): Range = start until (end+1)
+  def inRange(start: Int, end: Int): Range = start to end
 
   /**
    * Write a function that returns a Range of odd n odd integers starting at 1.
@@ -36,7 +36,7 @@ object ScalaBasics {
    * @param n the number of odd integers in the range
    * @return a Range of odd integers, excluding the last add integer
    */
-  def oddRange(n: Int): Range = 1 until(2*n, 2)
+  def oddRange(n: Int): Range = 1 to(2*n, 2)
 
   /**
    * Write a function that returns the minimum integer in the Array r.
@@ -96,7 +96,11 @@ object ScalaBasics {
    * @param r the array of integers
    * @return the minimum integer in the array
    */
-  def minRecursive(r: Array[Int]): Int = ???
+  def minRecursive(r: Array[Int]): Int = {
+    if (r.length == 1) r(0)
+    else if (r.length == 2) Math.min(r(0), r(1))
+    else minRecursive(Array(Math.min(r(0), r(1))) union r.slice(2, r.length))
+  }
 
   /**
    * Return the base 36 equivalent of the BitInt b.
