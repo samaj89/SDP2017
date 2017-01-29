@@ -156,7 +156,13 @@ object ScalaBasics {
    * @param s the potential palindrome
    * @return true if s is a palindrome; false otherwise
    */
-  def isPalindrome(s: String): Boolean = ???
+  def isPalindrome(s: String): Boolean = {
+    val cleanedString = (for {
+      c <- s
+      if c.isLetter
+    } yield c.toLower).mkString
+    cleanedString equals cleanedString.reverse
+  }
 
   /**
    * You don't have to complete this one as we've removed it from the list 
