@@ -27,6 +27,14 @@ class FunctionsTestSuite extends FunSuite {
     assert(setHead(List("A", "B", "C"), "0") == List("0", "B", "C"))
   }
 
+  test("Calling setHead on empty list returns list with single element") {
+    assert(setHead(List(), "A") == List("A"))
+  }
+
+  test("Calling setHead on result of setHead call changes the first element of the list") {
+    assert(setHead(setHead(List("A", "B", "C"), "O"), "X") == List("X", "B", "C"))
+  }
+
   test("drop removes N elements from the front of the list") {
     assert(drop(List(1, 2, 3), 2) == List(3))
   }
