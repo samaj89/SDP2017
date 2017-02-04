@@ -9,6 +9,20 @@ class FunctionsTestSuite extends FunSuite {
     assert(tail(List(1, 2, 3, 4)) == List(2, 3, 4))
   }
 
+  test("Calling tail on empty list throws IllegalArgumentException") {
+    intercept[IllegalArgumentException] {
+      tail(List())
+    }
+  }
+
+  test("Calling tail on single element list returns empty list") {
+    assert(tail(List(1)) == Nil)
+  }
+
+  test("Calling tail on result of tail call removes first two elements") {
+    assert(tail(tail(List(1, 2, 3, 4))) == List(3,4))
+  }
+
   test("setHead changes the first element of the list") {
     assert(setHead(List("A", "B", "C"), "0") == List("0", "B", "C"))
   }
