@@ -59,6 +59,20 @@ class FunctionsTestSuite extends FunSuite {
     assert(init(List("A", "B", "C", "D")) == List("A", "B", "C"))
   }
 
+  test("Calling init on empty list throws IllegalArgumentException") {
+    intercept[IllegalArgumentException] {
+      init(List())
+    }
+  }
+
+  test("Calling init on single element list returns empty list") {
+    assert(init(List(1)) == Nil)
+  }
+
+  test("Calling init on result of init call removes last two elements") {
+    assert(init(init(List(1, 2, 3, 4))) == List(1,2))
+  }
+
   // Folding
   test("foldLeft computes the correct value") {
     assert(foldLeft(List("H", "e", "l", "l", "o"), "")(_ + _) == "Hello")
