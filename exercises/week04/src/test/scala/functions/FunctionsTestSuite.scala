@@ -39,6 +39,22 @@ class FunctionsTestSuite extends FunSuite {
     assert(drop(List(1, 2, 3), 2) == List(3))
   }
 
+  test("drop returns empty list if N equals list size") {
+    assert(drop(List(1, 2, 3), 3) == Nil)
+  }
+
+  test("drop returns empty list if N exceeds list size") {
+    assert(drop(List(1, 2, 3), 4) == Nil)
+  }
+
+  test("drop returns empty list if called on empty list") {
+    assert(drop(List(), 3) == Nil)
+  }
+
+  test("Calling drop on result of drop call removes N1 + N2 elements from the front of the list") {
+    assert(drop(drop(List(1, 2, 3, 4, 5), 2), 2) == List(5))
+  }
+
   test("init removes the last element") {
     assert(init(List("A", "B", "C", "D")) == List("A", "B", "C"))
   }
