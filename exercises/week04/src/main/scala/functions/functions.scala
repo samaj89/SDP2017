@@ -23,10 +23,13 @@ object Funcs {
     *
     * @param ls : List[A] the list to be changed
     * @param a  : A the value that will replace the head of ls
-    * @return a list whose head is `a' and whose tail is all but the first
+    * @return a list whose head is 'a' and whose tail is all but the first
     *         element of ls.
     **/
-  def setHead[A](ls: List[A], a: A): List[A] = ???
+  def setHead[A](ls: List[A], a: A): List[A] = ls match {
+    case Nil => a :: Nil
+    case head :: tail => a :: tail
+  }
 
   /**
     * drop removes n elements from the given list. If n is greater than the
