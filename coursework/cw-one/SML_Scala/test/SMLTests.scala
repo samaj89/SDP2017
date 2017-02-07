@@ -36,7 +36,7 @@ class SMLTests {
 
   @Test def SubInstructionToStringReflectsContents() = {
     val output = SubInstruction("L3", 2, 1, 2).toString()
-    assertTrue(output == "L3: sub 2 - 1 to 2")
+    assertTrue(output == "L3: sub 1 - 2 to 2")
   }
 
 }
