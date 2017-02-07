@@ -14,5 +14,6 @@ class SubInstruction(label: String, op: String, val result: Int, val op1: Int, v
 }
 
 object SubInstruction {
-  def apply() = ???
+  def apply(label: String, result: Int, op1: Int, op2: Int) =
+    new SubInstruction(label, "sub", result, op1, op2)
 }
