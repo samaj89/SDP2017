@@ -96,7 +96,7 @@ object Funcs {
 
   def length[A](ls: List[A]): Int = foldLeft(ls, 0)((count, _) => count + 1)
 
-  def reverse[A](ls: List[A]): List[A] = ???
+  def reverse[A](ls: List[A]): List[A] = foldLeft(ls, List[A]())((x, y) => y :: x)
 
   def flatten[A](ls: List[List[A]]): List[A] = ???
 
