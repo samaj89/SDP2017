@@ -126,6 +126,18 @@ class FunctionsTestSuite extends FunSuite {
     assert(reverse("Hello".toList) == "olleH".toList)
   }
 
+  test("reverse reverses the list for even-length input") {
+    assert(reverse("Hola".toList) == "aloH".toList)
+  }
+
+  test("reverse returns empty list on empty list input") {
+    assert(reverse(List()) == List())
+  }
+
+  test("reverse returns copy of list on single element list input") {
+    assert(reverse(List(2.0)) == List(2.0))
+  }
+
   test("flatten flattens the nested list") {
     assert(flatten(List(List(1, 2, 3), List(4, 5, 6))) == List(1, 2, 3, 4, 5, 6))
   }
