@@ -92,7 +92,7 @@ object Funcs {
     */
   def sum(ls: List[Double]): Double = foldLeft(ls, 0.0)(_ + _)
 
-  def product(ls: List[Double]): Double = ???
+  def product(ls: List[Double]): Double = foldLeft(ls, 1.0)(_ * _)
 
   def length[A](ls: List[A]): Int = ???
 
