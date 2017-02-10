@@ -98,7 +98,7 @@ object Funcs {
 
   def reverse[A](ls: List[A]): List[A] = foldLeft(ls, List[A]())((x, y) => y :: x)
 
-  def flatten[A](ls: List[List[A]]): List[A] = ???
+  def flatten[A](ls: List[List[A]]): List[A] = foldLeft(ls, List[A]())((x, y) => x ::: y)
 
   // MAP AND FILTER
 
