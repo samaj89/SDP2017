@@ -94,7 +94,7 @@ object Funcs {
 
   def product(ls: List[Double]): Double = foldLeft(ls, 1.0)(_ * _)
 
-  def length[A](ls: List[A]): Int = ???
+  def length[A](ls: List[A]): Int = foldLeft(ls, 0)((count, _) => count + 1)
 
   def reverse[A](ls: List[A]): List[A] = ???
 
