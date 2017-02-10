@@ -90,6 +90,14 @@ class FunctionsTestSuite extends FunSuite {
     assert(sum(List(1.0, 2.0, 3.0, -3.0, -2.0, -1.0)) == 0.0)
   }
 
+  test("sum returns zero on empty list") {
+    assert(sum(List()) == 0.0)
+  }
+
+  test("sum returns element value on single element list") {
+    assert(sum(List(3.0)) == 3.0)
+  }
+
   test("product produces the correct product") {
     assert(product(List(1.0, 2.0, 3.0, 4.0, 5.0)) == 120.0)
   }
