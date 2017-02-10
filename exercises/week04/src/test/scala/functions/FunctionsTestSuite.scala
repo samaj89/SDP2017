@@ -142,6 +142,18 @@ class FunctionsTestSuite extends FunSuite {
     assert(flatten(List(List(1, 2, 3), List(4, 5, 6))) == List(1, 2, 3, 4, 5, 6))
   }
 
+  test("flatten returns empty list on empty list input") {
+    assert(flatten(List()) == List())
+  }
+
+  test("flatten flattens list of single element lists") {
+    assert(flatten(List(List(1), List(2), List(3), List(4), List(5), List(6))) == List(1, 2, 3, 4, 5, 6))
+  }
+
+  test("flatten returns single element list on input of list of one single element list") {
+    assert(flatten(List(List("X"))) == List("X"))
+  }
+
   // Map and Filter
   test("map creates a new list of the correct values") {
     assert(map((1 to 10).toList)(_ + 1) == (2 to 11).toList)
