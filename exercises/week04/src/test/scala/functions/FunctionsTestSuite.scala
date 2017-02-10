@@ -114,6 +114,14 @@ class FunctionsTestSuite extends FunSuite {
     assert(length("Hello".toList) == 5)
   }
 
+  test("length returns 0 on empty list") {
+    assert(length(List()) == 0)
+  }
+
+  test("length returns 1 for single element list") {
+    assert(length(List("X")) == 1)
+  }
+
   test("reverse reverses the list") {
     assert(reverse("Hello".toList) == "olleH".toList)
   }
