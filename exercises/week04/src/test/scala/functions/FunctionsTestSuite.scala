@@ -102,6 +102,14 @@ class FunctionsTestSuite extends FunSuite {
     assert(product(List(1.0, 2.0, 3.0, 4.0, 5.0)) == 120.0)
   }
 
+  test("product returns 1.0 on empty list") {
+    assert(product(List()) == 1.0)
+  }
+
+  test("product returns element value on single element list") {
+    assert(product(List(3.0)) == 3.0)
+  }
+
   test("length calculates the length") {
     assert(length("Hello".toList) == 5)
   }
