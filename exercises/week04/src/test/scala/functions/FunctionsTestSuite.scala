@@ -78,6 +78,14 @@ class FunctionsTestSuite extends FunSuite {
     assert(foldLeft(List("H", "e", "l", "l", "o"), "")(_ + _) == "Hello")
   }
 
+  test("foldLeft on empty list returns initial value") {
+    assert(foldLeft(List(), 0)((x: Int, y: Int) => x + y) == 0)
+  }
+
+  test("foldLeft on single element list returns element value") {
+    assert(foldLeft(List(3), 0)((x, y) => x + y) == 3)
+  }
+
   test("sum produces the correct sum") {
     assert(sum(List(1.0, 2.0, 3.0, -3.0, -2.0, -1.0)) == 0.0)
   }
