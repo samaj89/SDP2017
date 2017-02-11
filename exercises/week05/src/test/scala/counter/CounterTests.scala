@@ -1,6 +1,5 @@
 package counter
 
-import counter.Counter
 import org.scalatest.{FunSuite, BeforeAndAfter}
 
 class CounterTests extends FunSuite with BeforeAndAfter {
@@ -8,7 +7,7 @@ class CounterTests extends FunSuite with BeforeAndAfter {
   var counter: Counter = _
 
   before {
-    counter = new Counter(5)
+    counter = Counter(5)
   }
 
   test("inc should increase counter value by 1") {
