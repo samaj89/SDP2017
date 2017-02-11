@@ -159,6 +159,18 @@ class FunctionsTestSuite extends FunSuite {
     assert(map((1 to 10).toList)(_ + 1) == (2 to 11).toList)
   }
 
+  test("map on empty list returns an empty list") {
+    assert(map(List[Int]())(_ * 2) == List())
+  }
+
+  test("map on single element list returns single element list with correct value") {
+    assert(map(List("X"))(x => x toLowerCase) == List("x"))
+  }
+
+  test("map on return of map call returns correct application of composite function") {
+    assert(map(map(List(1, 2, 3, 4, 5))(_ * 2))(_ + 1) == List(3, 5, 7, 8, 9))
+  }
+
   test("filter filters the list") {
     assert(filter((-5 to 5).toList)(_ > 0) == (1 to 5).toList)
   }
