@@ -175,6 +175,22 @@ class FunctionsTestSuite extends FunSuite {
     assert(filter((-5 to 5).toList)(_ > 0) == (1 to 5).toList)
   }
 
+  test("filter returns empty list on empty list input") {
+    assert(filter(List[Int]())(_ > 0) == List())
+  }
+
+  test("filter returns empty list if no element in list satisfies the predicate") {
+    assert(filter((-5 to 5).toList)(_ > 10) == List())
+  }
+
+  test("filter returns original list if all elements in list satisfy the predicate") {
+    assert(filter(List('a', 'b', 'c', 'd', 'e'))(x => x isLetter) == List('a', 'b', 'c', 'd', 'e'))
+  }
+
+  test("filter on return of filter call correctly filters list twice") {
+    assert(filter(filter((1 to 20).toList)(x => x % 2 == 0))(x => x % 3 == 0) == List(6, 12, 18))
+  }
+
   test("flatMap maps and flattens") {
     assert(flatMap((1 to 5).toList)(x => (x to 5).toList) ==
       List(1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5))
