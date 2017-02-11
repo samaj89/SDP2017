@@ -1,6 +1,6 @@
 package person
 
-class Person(val first: String, val last: String) {
+case class Person(first: String, last: String) {
 
 }
 
