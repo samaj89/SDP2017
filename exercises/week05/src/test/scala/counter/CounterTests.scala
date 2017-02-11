@@ -61,4 +61,14 @@ class CounterTests extends FunSuite with BeforeAndAfter {
   test("Default Counter has value 0") {
     assert(Counter().count == 0)
   }
+
+  test("adjust returns Counter with correct value") {
+    val adder = Adder(5)
+    assert(counter.adjust(adder).count === 10)
+  }
+  test("adjust returns Counter with same value when Adder has zero value") {
+    val adder = Adder(0)
+    assert(counter.adjust(adder).count === 5)
+  }
+
 }
