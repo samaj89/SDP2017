@@ -1,9 +1,9 @@
 package counter
 
 class Counter(var count: Int) {
-  def inc: Counter = Counter(count + 1)
+  def inc(x: Int = 1): Counter = Counter(count + x)
 
-  def dec: Counter = Counter(count - 1)
+  def dec(x: Int = 1): Counter = Counter(count - x)
 
 }
 
