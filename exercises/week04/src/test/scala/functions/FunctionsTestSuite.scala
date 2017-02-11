@@ -168,7 +168,7 @@ class FunctionsTestSuite extends FunSuite {
   }
 
   test("map on return of map call returns correct application of composite function") {
-    assert(map(map(List(1, 2, 3, 4, 5))(_ * 2))(_ + 1) == List(3, 5, 7, 8, 9))
+    assert(map(map(List(1, 2, 3, 4, 5))(_ * 2))(_ + 1) == List(3, 5, 7, 9, 11))
   }
 
   test("filter filters the list") {
