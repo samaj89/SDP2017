@@ -57,4 +57,8 @@ class CounterTests extends FunSuite with BeforeAndAfter {
   test("dec(0) does not change counter value") {
     assert(counter.dec(0).count === 5)
   }
+
+  test("Default Counter has value 0") {
+    assert(Counter().count == 0)
+  }
 }

@@ -1,12 +1,8 @@
 package counter
 
-class Counter(var count: Int) {
-  def inc(x: Int = 1): Counter = Counter(count + x)
+case class Counter(count: Int = 0) {
+  def inc(x: Int = 1): Counter = this.copy(count = count + x)
 
-  def dec(x: Int = 1): Counter = Counter(count - x)
-
+  def dec(x: Int = 1): Counter = this.copy(count = count - x)
 }
 
-object Counter{
-  def apply(count: Int) = new Counter(count)
-}
