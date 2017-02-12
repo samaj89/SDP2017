@@ -17,3 +17,11 @@ class Film(private val _name: String, private val _yearOfRelease: Int,
   def director = _director
 
 }
+
+object Film {
+  def apply(name: String, yearOfRelease: Int, imdbRating: Double, director: Director) = ???
+
+  def highestRating(f1: Film, f2: Film): Double = ???
+
+  def oldestDirectorAtTheTime(f1: Film, f2: Film): Director = ???
+}

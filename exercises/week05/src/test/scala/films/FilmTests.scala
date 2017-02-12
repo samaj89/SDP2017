@@ -35,4 +35,20 @@ class FilmTests extends FunSuite {
     assert(f1.director equals f3.director)
   }
 
+  test("apply returns new Film") {
+    val f2 = Film.apply("2001: A Space Odyssey", 1968, 8.3, d2)
+    assert(f2.isDirectedBy(d2) === true)
+  }
+
+  test("highestRating returns Film with higher rating") {
+    val f2 = new Film("2001: A Space Odyssey", 1968, 8.3, d2)
+    assert(Film.highestRating(f1, f2) === 8.3)
+  }
+
+  test("oldestDirectorAtTheTime returns oldest director") {
+    val f2 = new Film("2001: A Space Odyssey", 1968, 8.3, d2)
+    val d3 = Film.oldestDirectorAtTheTime(f1, f2)
+    assert(d3.name === "James Cameron")
+  }
+
 }
