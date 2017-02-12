@@ -11,7 +11,7 @@ class DirectorTests extends FunSuite {
 
   test("apply returns new Director") {
     val d2 = Director.apply("Stanley", "Kubrick", 1928)
-    assert(d2.name === "Stabley Kubrick")
+    assert(d2.name === "Stanley Kubrick")
   }
 
   test("older returns older director") {

@@ -8,7 +8,8 @@ class Director(firstName: String, lastName: String, private val _yearOfBirth: In
 }
 
 object Director {
-  def apply(firstName: String, lastName: String, yearOfBirth: Int) = ???
+  def apply(firstName: String, lastName: String, yearOfBirth: Int) =
+    new Director(firstName, lastName, yearOfBirth)
 
-  def older(d1: Director, d2: Director) = ???
+  def older(d1: Director, d2: Director) = if (d1.yearOfBirth < d2.yearOfBirth) d1 else d2
 }
