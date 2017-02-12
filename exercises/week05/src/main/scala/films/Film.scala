@@ -19,9 +19,12 @@ class Film(private val _name: String, private val _yearOfRelease: Int,
 }
 
 object Film {
-  def apply(name: String, yearOfRelease: Int, imdbRating: Double, director: Director) = ???
+  def apply(name: String, yearOfRelease: Int, imdbRating: Double, director: Director) =
+    new Film(name, yearOfRelease, imdbRating, director)
 
-  def highestRating(f1: Film, f2: Film): Double = ???
+  def highestRating(f1: Film, f2: Film): Double =
+    if (f1.imdbRating > f2.imdbRating) f1.imdbRating else f2.imdbRating
 
-  def oldestDirectorAtTheTime(f1: Film, f2: Film): Director = ???
+  def oldestDirectorAtTheTime(f1: Film, f2: Film): Director =
+    if (f1.directorsAge > f2.directorsAge) f1.director else f2.director
 }
