@@ -8,7 +8,8 @@ class Film(private val _name: String, private val _yearOfRelease: Int,
   def isDirectedBy(director: Director): Boolean = director.equals(this.director)
 
   def copy(name: String = this.name, yearOfRelease: Int = this.yearOfRelease,
-           imdbRating: Double = this.imdbRating, director: Director = this.director): Film = ???
+           imdbRating: Double = this.imdbRating, director: Director = this.director): Film =
+    new Film(name, yearOfRelease, imdbRating, director)
 
   def name = _name
   def yearOfRelease = _yearOfRelease
