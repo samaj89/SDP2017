@@ -15,7 +15,7 @@ class FilmTests extends FunSuite {
     assert(f1.isDirectedBy(d1) === true)
   }
 
-  test("isDirectedBy returns true when director is correct") {
+  test("isDirectedBy returns false when director is incorrect") {
     assert(f1.isDirectedBy(d2) === false)
   }
 
