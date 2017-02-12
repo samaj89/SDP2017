@@ -19,4 +19,20 @@ class FilmTests extends FunSuite {
     assert(f1.isDirectedBy(d2) === false)
   }
 
+  test("copy returns copy of Film with same fields") {
+    val f2 = f1.copy()
+    assert(f1.name equals f2.name)
+    assert(f1.yearOfRelease equals f2.yearOfRelease)
+    assert(f1.imdbRating equals f2.imdbRating)
+    assert(f1.director equals f2.director)
+  }
+
+  test("copy with parameters returns copy of Film with changes") {
+    val f3 = f1.copy(yearOfRelease = 2012, imdbRating = 10.0)
+    assert(f1.name equals f3.name)
+    assert(!(f1.yearOfRelease equals f3.yearOfRelease))
+    assert(!(f1.imdbRating equals f3.imdbRating))
+    assert(f1.director equals f3.director)
+  }
+
 }
