@@ -11,3 +11,8 @@ class MulInstruction(label: String, op: String, val result: Int, val op1: Int, v
   override def toString(): String = ???
 
 }
+
+object MulInstruction {
+  def apply(label: String, result: Int, op1: Int, op2: Int) =
+    new MulInstruction(label, "mul", result, op1, op2)
+}
