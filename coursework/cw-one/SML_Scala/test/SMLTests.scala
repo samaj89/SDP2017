@@ -70,7 +70,7 @@ class SMLTests {
   @Test def multiplyRegisterContentsByItself() = {
     LinInstruction("L!", 1, 10).execute(m)
     MulInstruction("L2", 1, 1, 1).execute(m)
-    assertTrue(m.regs(3) == 100)
+    assertTrue(m.regs(1) == 100)
   }
 
   @Test def MulInstructionToStringReflectsContents() = {
