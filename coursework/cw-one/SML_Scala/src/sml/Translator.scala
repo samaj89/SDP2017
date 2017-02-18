@@ -31,6 +31,7 @@ class Translator(fileName: String) {
         try {
           val newInstr = Class.forName(className)
           // 2. Get class's apply method
+          val apply = newInstr.getMethod("apply")
           // 3. Get parameters to invoke class's apply method
           // 4. Invoke and add instruction to program
         } catch {
