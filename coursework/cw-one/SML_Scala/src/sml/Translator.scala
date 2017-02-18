@@ -26,15 +26,15 @@ class Translator(fileName: String) {
       val fields = line.split(" ")
       if (fields.length > 0) {
         labels.add(fields(0))
-        // ******* REFLECTION - TO DO *******
-        // 1. Construct class name and get class of instruction
+        // ******* REFLECTION *******
+        // Construct class name and get class of instruction
         val instrType = fields(1)
         val className = "sml." + instrType.capitalize + "Instruction"
         try {
           val newInstr = Class.forName(className)
-          // 2. Get class's apply method
+          // Get class's apply method
           val apply = newInstr.getMethods.find(m => m.getName equals "apply").get
-          // 3. Get parameters to invoke class's apply method
+          // Get parameters to invoke class's apply method
           val params = apply getParameterTypes
           var args = Seq[Any]()
           args = args :+ fields(0)
@@ -44,7 +44,7 @@ class Translator(fileName: String) {
               case "class java.lang.String" => args = args :+ fields(i)
             }
           }
-          // 4. Invoke and add instruction to program
+          // Invoke apply and add instruction to program
           val argsObj = args.map(arg => arg.asInstanceOf[Object])
           val instruction = apply.invoke(this, argsObj: _*).asInstanceOf[Instruction]
           program = program :+ instruction
