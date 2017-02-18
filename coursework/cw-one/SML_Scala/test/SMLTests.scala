@@ -82,4 +82,28 @@ class SMLTests {
     val output = OutInstruction("L1", 1).toString()
     assertTrue(output == "L1: out print contents of 1\n")
   }
+
+  @Test def BnzInstructionToStringReflectsContents() = {
+    val output = BnzInstruction("L1", 1, "L3").toString()
+    assertTrue(output == "L1: bnz if contents of 1 is not 0 branch to L3\n")
+  }
+
+  @Test def BnzInstructionBranchesIfRegisterNotZero() = {
+    m.pc = 2
+    m.regs(1) = 1
+    m.labels.add("L1")
+    m.labels.add("L2")
+    m.labels.add("L3")
+    BnzInstruction("L3", 1, "L2").execute(m)
+    assertTrue(m.pc == 1)
+  }
+
+  @Test def BnzInstructionDoesNotBranchIfRegisterZero() = {
+    m.pc = 2
+    m.labels.add("L1")
+    m.labels.add("L2")
+    m.labels.add("L3")
+    BnzInstruction("L3", 1, "L2").execute(m)
+    assertTrue(m.pc == 2)
+  }
 }
