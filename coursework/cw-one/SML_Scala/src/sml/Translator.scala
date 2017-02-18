@@ -35,6 +35,15 @@ class Translator(fileName: String) {
           // 2. Get class's apply method
           val apply = newInstr.getMethods.find(m => m.getName equals "apply").get
           // 3. Get parameters to invoke class's apply method
+          val params = apply getParameterTypes
+          var args = Seq[Any]()
+          args = args :+ fields(0)
+          for (i <- 2 until fields.length) {
+            params(i-1).toString match {
+              case "int" => args = args :+ fields(i).toInt
+              case "class java.lang.String" => args = args :+ fields(i)
+            }
+          }
           // 4. Invoke and add instruction to program
         } catch {
           case ex: ClassNotFoundException => println(s"No class of instruction [$instrType]")
