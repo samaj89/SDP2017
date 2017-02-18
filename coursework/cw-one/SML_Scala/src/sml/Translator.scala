@@ -1,5 +1,7 @@
 package sml
 
+import java.lang.reflect.Method
+
 /*
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
  */
@@ -31,7 +33,7 @@ class Translator(fileName: String) {
         try {
           val newInstr = Class.forName(className)
           // 2. Get class's apply method
-          val apply = newInstr.getMethod("apply")
+          val apply = newInstr.getMethods.find(m => m.getName equals "apply").get
           // 3. Get parameters to invoke class's apply method
           // 4. Invoke and add instruction to program
         } catch {
