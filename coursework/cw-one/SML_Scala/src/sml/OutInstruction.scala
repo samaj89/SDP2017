@@ -6,9 +6,9 @@ package sml
 class OutInstruction(label: String, op: String, val op1: Int)
   extends Instruction(label, op){
 
-  override def execute(m: Machine) = ???
+  override def execute(m: Machine) = println(m.regs(op1))
 
-  override def toString(): String = ???
+  override def toString(): String = super.toString + " print contents of " + op1 + "\n"
 
 }
 

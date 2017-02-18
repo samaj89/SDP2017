@@ -36,7 +36,7 @@ class SMLTests {
 
   @Test def SubInstructionToStringReflectsContents() = {
     val output = SubInstruction("L3", 2, 1, 2).toString()
-    assertTrue(output == "L3: sub 1 - 2 to 2")
+    assertTrue(output == "L3: sub 1 - 2 to 2\n")
   }
 
   @Test def multiplyPositiveByPositive() = {
@@ -75,11 +75,11 @@ class SMLTests {
 
   @Test def MulInstructionToStringReflectsContents() = {
     val output = MulInstruction("L3", 2, 1, 2).toString()
-    assertTrue(output == "L3: mul 1 * 2 to 2")
+    assertTrue(output == "L3: mul 1 * 2 to 2\n")
   }
 
   @Test def OutInstructionToStringReflectsContents() = {
     val output = OutInstruction("L1", 1).toString()
-    assertTrue(output == "L1: print contents of 1")
+    assertTrue(output == "L1: out print contents of 1\n")
   }
 }
