@@ -45,28 +45,31 @@ class Translator(fileName: String) {
             }
           }
           // 4. Invoke and add instruction to program
+          val argsObj = args.map(arg => arg.asInstanceOf[Object])
+          val instruction = apply.invoke(this, argsObj: _*).asInstanceOf[Instruction]
+          program = program :+ instruction
         } catch {
-          case ex: ClassNotFoundException => println(s"No class of instruction [$instrType]")
+          case ex: ClassNotFoundException => println(s"Unknown instruction $instrType")
         }
 
-        fields(1) match {
-          case ADD =>
-            program = program :+ AddInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case LIN =>
-            program = program :+ LinInstruction(fields(0), fields(2).toInt, fields(3).toInt)
-          case SUB =>
-            program = program :+ SubInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case MUL =>
-            program = program :+ MulInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case OUT =>
-            program = program :+ OutInstruction(fields(0), fields(2).toInt)
-          case BNZ =>
-            program = program :+ BnzInstruction(fields(0), fields(2).toInt, fields(3))
-          case DIV =>
-            program = program :+ DivInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case x =>
-            println(s"Unknown instruction $x")
-        }
+//        fields(1) match {
+//          case ADD =>
+//            program = program :+ AddInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
+//          case LIN =>
+//            program = program :+ LinInstruction(fields(0), fields(2).toInt, fields(3).toInt)
+//          case SUB =>
+//            program = program :+ SubInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
+//          case MUL =>
+//            program = program :+ MulInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
+//          case OUT =>
+//            program = program :+ OutInstruction(fields(0), fields(2).toInt)
+//          case BNZ =>
+//            program = program :+ BnzInstruction(fields(0), fields(2).toInt, fields(3))
+//          case DIV =>
+//            program = program :+ DivInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
+//          case x =>
+//            println(s"Unknown instruction $x")
+//        }
       }
     }
     new Machine(labels, program)
