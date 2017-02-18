@@ -26,11 +26,17 @@ class Translator(fileName: String) {
         labels.add(fields(0))
         // ******* REFLECTION - TO DO *******
         // 1. Construct class name and get class of instruction
-        val className = "sml." + fields(1).capitalize + "Instruction"
-        val newInstr = Class.forName(className)
-        // 2. Get class's apply method
-        // 3. Get parameters to invoke class's apply method
-        // 4. Invoke and add instruction to program
+        val instrType = fields(1)
+        val className = "sml." + instrType.capitalize + "Instruction"
+        try {
+          val newInstr = Class.forName(className)
+          // 2. Get class's apply method
+          // 3. Get parameters to invoke class's apply method
+          // 4. Invoke and add instruction to program
+        } catch {
+          case ex: ClassNotFoundException => println(s"No class of instruction [$instrType]")
+        }
+
         fields(1) match {
           case ADD =>
             program = program :+ AddInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
