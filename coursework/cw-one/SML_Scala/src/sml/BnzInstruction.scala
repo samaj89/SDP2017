@@ -20,8 +20,4 @@ class BnzInstruction(label: String, op: String, val op1: Int, goTo: String)
 object BnzInstruction {
   def apply(label: String, op1: Int, goTo: String) =
     new BnzInstruction(label, "bnz", op1, goTo)
-
-  def main(args: Array[String]): Unit = {
-    println(BnzInstruction("L1", 1, "L3").toString())
-  }
 }
