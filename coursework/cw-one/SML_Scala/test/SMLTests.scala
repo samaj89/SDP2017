@@ -78,4 +78,8 @@ class SMLTests {
     assertTrue(output == "L3: mul 1 * 2 to 2")
   }
 
+  @Test def OutInstructionToStringReflectsContents() = {
+    val output = OutInstruction("L1", 1).toString()
+    assertTrue(output == "L1: print contents of 1")
+  }
 }
