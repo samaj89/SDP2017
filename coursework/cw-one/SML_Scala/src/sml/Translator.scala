@@ -32,22 +32,9 @@ class Translator(fileName: String) {
         val className = "sml." + instrType.capitalize + "Instruction"
         try {
           val newInstr = Class.forName(className)
-          // Get class's apply method
-          val apply = newInstr.getMethods.find(m => m.getName equals "apply").get
-          // Get parameters to invoke class's apply method
-          val params = apply getParameterTypes
-          var args = Seq[Any]()
-          args = args :+ fields(0)
-          for (i <- 2 until fields.length) {
-            params(i-1).toString match {
-              case "int" => args = args :+ fields(i).toInt
-              case "class java.lang.String" => args = args :+ fields(i)
-            }
-          }
-          // Invoke apply and add instruction to program
-          val argsObj = args.map(arg => arg.asInstanceOf[Object])
-          val instruction = apply.invoke(this, argsObj: _*).asInstanceOf[Instruction]
-          program = program :+ instruction
+          // Get class's default constructor
+          // Get arguments for constructor
+          // Invoke constructor and add instruction to program
         } catch {
           case ex: ClassNotFoundException => println(s"Unknown instruction $instrType")
         }
