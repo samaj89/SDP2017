@@ -1,0 +1,12 @@
+1.
+(a) Briefly describe the Strategy Design Pattern?
+The Stategy Design Pattern defines an interface that represents a behaviour and implementations of that
+interface that represent types of that behaviour and associated methods. This family of behavious is
+therefore encapsulated. Classes are then composed of behaviour interfaces, with methods of those classes
+calling methods of the behaviour interfaces. The classes can have a method that sets behaviour, which is
+used to switch between implementations of the behaviour interface at runtime. This means that it is the
+behaviour itself that varies, rather than the class that uses this behaviour.
+
+(b) When is it appropriate to use the Strategy Design Pattern?
+The Strategy Design Pattern can be used when a set of classes differs only by some certain behaviour that
+is relevant to the classes. This behaviour should be encapsulated.
