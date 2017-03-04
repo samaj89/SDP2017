@@ -10,7 +10,7 @@ class CommentaryObjectObservable(val title: String) extends Subject with Comment
 
   override def unSubscribeObserver(observer: Observer) = {
     val indexToRemove = subscribers indexOf observer
-    subscribers remove indexToRemove
+    if (indexToRemove != -1) subscribers remove indexToRemove
   }
 
   override def notifyObservers() = {
