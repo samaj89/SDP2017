@@ -1,6 +1,8 @@
 package observer
 
-case class SMSUsers(s: Subject, msg: String) extends Observer {
+// Using SMSUsersObserver instead as per TestObserver
+
+class SMSUsers(s: Subject, msg: String) extends Observer {
   def update(desc: String) = ???
 
   def subscribe() = ???
