@@ -1,6 +1,6 @@
 package sml
 
-import java.lang.reflect.Method
+import scala.util.{Failure, Success, Try}
 
 /*
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
@@ -33,8 +33,18 @@ class Translator(fileName: String) {
         try {
           val newInstr = Class.forName(className)
           // Get class's default constructor
+          val cons = newInstr.getConstructors()(0)
           // Get arguments for constructor
+          var args = new Array[Object](fields.length)
+          for (i <- 0 until fields.length) {
+            Try(fields(i).toInt) match {
+              case Success(x) => args(i) = new Integer(x)
+              case Failure(e) => args(i) = fields(i)
+            }
+          }
           // Invoke constructor and add instruction to program
+          val instruction = cons.newInstance(args: _*).asInstanceOf[Instruction]
+          program = program :+ instruction
         } catch {
           case ex: ClassNotFoundException => println(s"Unknown instruction $instrType")
         }
