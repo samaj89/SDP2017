@@ -1,0 +1,26 @@
+11.
+(a) What is the Composite Pattern?
+
+The Composite pattern composes objects into a tree structure in order to represent
+part-whole relationships. The composition is achieved in such a way that a client can
+treat both leaf and branch nodes of the resultant tree in a uniform manner.
+
+(b) Under what conditions would you use a Composite Design Pattern?
+
+One would use the Composite design pattern when the client wishes to perform similar
+actions on the objects that represent both the leaf and branch nodes of the tree structure.
+For example, both folders and files in a file system can be created, deleted, moved,
+renamed, copied, and so on.
+
+(c) What are the four participants of the Composite Design Pattern?
+
+Component - the interface that both Leaf and Composite objects implement. It defines the
+methods common to both Leaf and Composite objects.
+
+Leaf - Objects in the tree structure that have no children.
+
+Composite - Objects in the tree structure that have children (which can be either Leaf
+or Composite objects). As well as implement the Component interface, Composite objects have
+methods for adding, removing, or accessing children.
+
+Client - Manipulates objects in the tree structure.
