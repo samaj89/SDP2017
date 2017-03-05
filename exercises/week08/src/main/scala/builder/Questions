@@ -1,0 +1,13 @@
+5. “In general, the details of object construction, such as instantiating and
+initialising the components that comprise the object, are kept within the
+object, often as part of its constructor.”
+
+Comment on this statement with reference to modularity and construction bloat.
+
+The approach described above is appropriate for simple objects for which the construction
+process always produces the same representation of the object. As objects become more complex
+and the components making up the object are allowed to vary, however, the above approach
+becomes less effective, as this would require different implementations of the construction
+process to be kept within the object for each variation. This leads to lots of constructor
+code within the object (construction bloat) and reduces the modularity of the object, as the
+individual components of the object are tightly bound to the object within the constructor code.
