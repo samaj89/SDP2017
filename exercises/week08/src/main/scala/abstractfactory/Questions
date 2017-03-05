@@ -1,0 +1,5 @@
+3. When is it appropriate to use the Abstract Factory design pattern?
+Use the Abstract Factory pattern when you want to ability to create families of related classes
+but don't want to explicitly specify the class of objects until runtime. The pattern allows
+a client to switch between different families of classes at runtime (but does not allow mixing of
+objects from different families).
