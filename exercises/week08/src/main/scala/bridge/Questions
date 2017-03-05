@@ -1,0 +1,6 @@
+9. When should one make use of the Bridge Design Pattern?
+
+Use the Bridge design pattern when a given abstraction may have several implementations,
+but you wish to avoid permanently binding the implementation to the abstraction (i.e. via
+inheritance) so as to allow both the implementation and the abstraction to vary independently.
+This allows an implementation to be modified or switched out for another at runtime.
