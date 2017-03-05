@@ -1,0 +1,10 @@
+7.
+(a) What is the Facade Pattern?
+The Facade Pattern provides a simple high-level interface to a set of interfaces within
+a subsystem, with the aim of making the subsystem easier to use.
+
+(b) When, and why, would you use the Facade Pattern?
+Providing a simple interface to a complex system shields the client from complexity provided
+by the lower level interfaces: the client sends request to the facade interface, which translates
+and handles communication between the subsystem interfaces. The facade therefore acts to decouple
+interfaces within the subsystem.
