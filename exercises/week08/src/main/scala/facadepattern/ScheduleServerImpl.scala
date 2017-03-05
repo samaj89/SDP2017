@@ -1,29 +1,27 @@
 package facadepattern
 
-//TODO
-
 case class ScheduleServerImpl() extends ScheduleServer {
-  override def startBooting: Unit = ???
+  override def startBooting = println("Booting up...")
 
-  override def readSystemConfigFile: Unit = ???
+  override def readSystemConfigFile = println("Reading system configuration file")
 
-  override def init: Unit = ???
+  override def init = println("Initializing...")
 
-  override def initializeContext: Unit = ???
+  override def initializeContext = println("Initializing context...")
 
-  override def initializeListeners: Unit = ???
+  override def initializeListeners = println("Initializing listeners...")
 
-  override def createSystemObjects: Unit = ???
+  override def createSystemObjects = println("Creating system objects")
 
-  override def releaseProcesses: Unit = ???
+  override def releaseProcesses = println("Releasing processes...")
 
-  override def destory: Unit = ???
+  override def destory = println("Destroying...")
 
-  override def destroySystemObjects: Unit = ???
+  override def destroySystemObjects = println("Destroying system objects...")
 
-  override def destoryListeners: Unit = ???
+  override def destoryListeners = println("Destroying listeners...")
 
-  override def destoryContext: Unit = ???
+  override def destoryContext = println("Destroying context...")
 
-  override def shutdown: Unit = ???
+  override def shutdown = println("Shutting down...")
 }
