@@ -1,5 +1,8 @@
 package abstractfactory
 
 class LondonResponseXMLParser extends XMLParser {
-  override def parse = "London Response XML Message"
+  override def parse: String = {
+    println("London Parsing response XML...")
+    "London Response XML Message"
+  }
 }

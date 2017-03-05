@@ -6,6 +6,5 @@ class NYCParserFactory extends AbstractParserFactory {
     case "NYCERROR" => new NYCErrorXMLParser
     case "NYCFEEDBACK" => new NYCFeedbackXMLParser
     case "NYCRESPONSE" => new NYCResponseXMLParser
-    case _ => null
   }
 }

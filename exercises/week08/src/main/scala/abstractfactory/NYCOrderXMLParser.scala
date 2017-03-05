@@ -1,5 +1,8 @@
 package abstractfactory
 
 class NYCOrderXMLParser extends XMLParser {
-  override def parse = "NYC Order XML Message"
+  override def parse: String = {
+    println("NYC Parsing order XML...")
+    "NYC Order XML Message"
+  }
 }

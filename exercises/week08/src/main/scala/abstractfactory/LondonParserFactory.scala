@@ -6,6 +6,5 @@ class LondonParserFactory extends AbstractParserFactory {
     case "LondonERROR" => new LondonErrorXMLParser
     case "LondonFEEDBACK" => new LondonFeedbackXMLParser
     case "LondonRESPONSE" => new LondonResponseXMLParser
-    case _ => null
   }
 }
