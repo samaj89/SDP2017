@@ -3,7 +3,7 @@ package facadepattern
 case class ScheduleServerImpl() extends ScheduleServer {
   override def startBooting = println("Booting up...")
 
-  override def readSystemConfigFile = println("Reading system configuration file")
+  override def readSystemConfigFile = println("Reading system configuration file...")
 
   override def init = println("Initializing...")
 
