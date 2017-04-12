@@ -1,5 +1,5 @@
 package command
 
 class Sms {
-  def sendSms: Unit = ???
+  def sendSms: Unit = println("Sending SMS...")
 }
