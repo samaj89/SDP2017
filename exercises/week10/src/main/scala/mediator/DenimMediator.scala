@@ -29,5 +29,5 @@ class DenimMediator(private val machine: Machine,
   override def off() = heater.off
 
   override def checkTemperature(temp: Int): Boolean =
-    sensor.checkTemperature(temp)
+    sensor.checkTemperature(30)
 }
