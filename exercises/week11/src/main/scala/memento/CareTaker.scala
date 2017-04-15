@@ -13,7 +13,7 @@ case class CareTaker() {
 
   def getMemento(savepointName: String): Memento = savepointStorage.get(savepointName)
 
-  def clearSavepoints(): Unit = {
+  def clearSavepoints() = {
     println("Clearing all save points...")
     savepointStorage.clear()
   }

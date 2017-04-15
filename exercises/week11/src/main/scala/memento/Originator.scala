@@ -10,7 +10,7 @@ case class Originator(
 
   createSavepoint("INITIAL")
 
-  def createSavepoint(savepointName: String): Unit = {
+  def createSavepoint(savepointName: String) = {
     println("Saving state..." + savepointName)
     val newSave = Memento(x, y)
     careTaker.saveMemento(newSave, savepointName)
