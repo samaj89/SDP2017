@@ -29,9 +29,7 @@ object Question38 {
     */
 
   def duels1(dwarves: List[String]): List[Duel] = {
-    val a = dwarves
-    val b = dwarves
-    a.flatMap(_a => b.map(_b => (_a, _b))).filter(duel => !(duel._1 equals duel._2))
+    dwarves.flatMap(x => dwarves.map(y => (x, y))).filter(duel => duel._1 != duel._2)
   }
 
   /**
@@ -41,7 +39,7 @@ object Question38 {
     */
 
   def duels2(dwarves: List[String]): List[Duel] = {
-    for (x <- dwarves; y <- dwarves if !(x equals y)) yield (x, y)
+    for (x <- dwarves; y <- dwarves if x != y) yield (x, y)
   }
 
   /**
