@@ -34,9 +34,9 @@ object TreeOps extends App {
   @tailrec
   def find(n: Int, t: Tree): Boolean = t match {
     case Leaf => false
-    case Node(lhs, v, rhs) if n == v => true
     case Node(lhs, v, _) if n < v => find(n, lhs)
-    case Node (_, v, rhs) => find(n, rhs)
+    case Node (_, v, rhs) if n > v => find(n, rhs)
+    case Node(_, v, _) => n == v
   }
 
   def inOrderTraversal(t: Tree): String = t match {
@@ -44,12 +44,23 @@ object TreeOps extends App {
     case Node(lhs, v, rhs) => inOrderTraversal(lhs) + " " + v.toString + " " + inOrderTraversal(rhs)
   }
 
+  def getMax(t: Tree): Either[String, Int] = t match {
+    case Leaf => Left("Empty tree")
+    case Node(_, v, rhs) => rhs match {
+      case Leaf => Right(v)
+      case Node(_, _, _) => getMax(rhs)
+    }
+  }
+
   val t1 = Node(Leaf, 10, Leaf)
   val t2 = insert(1, insert(12, insert(10, insert(23, insert(7, insert(15, insert(5, t1)))))))
+  val t3 = Leaf
   println(t2)
   println(size(t2))
   println(sizeTailRec(t2))
   println(find(7, t2))
   println(find(19, t2))
   println(inOrderTraversal(t2))
+  println(getMax(t2))
+  println(getMax(t3))
 }
