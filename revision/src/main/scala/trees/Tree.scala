@@ -53,6 +53,7 @@ object TreeOps extends App {
     }
   }
 
+  // Depth-first
   def average(t: Tree): Double = {
     @tailrec
     def aveHelper(lst: List[Tree], acc: Int, count: Double): (Int, Double) = lst match {
@@ -60,6 +61,21 @@ object TreeOps extends App {
       case h :: t => h match {
         case Leaf => aveHelper(t, acc, count)
         case Node(lhs, v, rhs) => aveHelper(lhs :: rhs :: t, acc + v, count + 1)
+      }
+    }
+
+    val (sum: Int, count: Double) = aveHelper(List(t), 0, 0.0)
+    sum / count
+  }
+
+  // Breadth-first
+  def average2(t: Tree): Double = {
+    @tailrec
+    def aveHelper(lst: List[Tree], acc: Int, count: Double): (Int, Double) = lst match {
+      case Nil => (acc, count)
+      case h :: t => h match {
+        case Leaf => aveHelper(t, acc, count)
+        case Node(lhs, v, rhs) => aveHelper(t :+ lhs :+ rhs, acc + v, count + 1)
       }
     }
 
@@ -79,4 +95,5 @@ object TreeOps extends App {
   println(getMax(t2))
   println(getMax(t3))
   println(average(t2))
+  println(average2(t2))
 }
