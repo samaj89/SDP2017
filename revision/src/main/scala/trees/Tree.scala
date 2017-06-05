@@ -44,12 +44,27 @@ object TreeOps extends App {
     case Node(lhs, v, rhs) => inOrderTraversal(lhs) + " " + v.toString + " " + inOrderTraversal(rhs)
   }
 
+  @tailrec
   def getMax(t: Tree): Either[String, Int] = t match {
     case Leaf => Left("Empty tree")
     case Node(_, v, rhs) => rhs match {
       case Leaf => Right(v)
       case Node(_, _, _) => getMax(rhs)
     }
+  }
+
+  def average(t: Tree): Double = {
+    @tailrec
+    def aveHelper(lst: List[Tree], acc: Int, count: Double): (Int, Double) = lst match {
+      case Nil => (acc, count)
+      case h :: t => h match {
+        case Leaf => aveHelper(t, acc, count)
+        case Node(lhs, v, rhs) => aveHelper(lhs :: rhs :: t, acc + v, count + 1)
+      }
+    }
+
+    val (sum: Int, count: Double) = aveHelper(List(t), 0, 0.0)
+    sum / count
   }
 
   val t1 = Node(Leaf, 10, Leaf)
@@ -63,4 +78,5 @@ object TreeOps extends App {
   println(inOrderTraversal(t2))
   println(getMax(t2))
   println(getMax(t3))
+  println(average(t2))
 }
